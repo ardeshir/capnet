@@ -86,7 +86,7 @@ func printPacketInfo(packet gopacket.Packet) {
 
 
    // Iterate over all the layers printing out each layer type
-   fmt.Println("App packet layers:")
+   fmt.Println("All packet layers:")
    for _, layer := range packet.Layers() {
 	fmt.Println("- " , layer.LayerType() )
    }
@@ -96,12 +96,12 @@ func printPacketInfo(packet gopacket.Packet) {
    // this applicationLayer. applicationLayer contains the payload
    applicationLayer := packet.ApplicationLayer()
    if applicationLayer != nil {
-	fmt.Println("Application layer/Payload found.")
+	fmt.Println(" [   Application layer/Payload found ]  ")
 	fmt.Printf("%s\n", applicationLayer.Payload())
 
 	// Search for a string inside the payload
 	if strings.Contains(string(applicationLayer.Payload()), "HTTP") {
-	   fmt.Println("+++++++++======= HTTP found =======+++++++")
+	   fmt.Println("######_______   HTTP found  _______######")
 	}
    }
 
